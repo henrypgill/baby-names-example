@@ -1,134 +1,92 @@
----
-module: React
+# React app (Vite)
 
-level: 1
+## Installation
 
-methods:
-  - team
-  - pair
-  - solo
+```
+yarn
+```
 
-tags:
-  - react
----
+## Running dev server
 
-# Academy Project: Baby Names Picker
+```
+yarn start
+```
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+This will start a local server listening for http requests on port 3000.
 
-## Overview
+It will also ask your browser to open a tab to `http://localhost:3000/`
 
-You will make and deploy a single-page React app which will show baby names and let you pick your favourites. The names data is provided for you.
+Any type-check and linting errors will appear in the browser and in the terminal output as you browse.
 
-Here's an example screenshot to give you a rough idea, but note that the project text below takes precedence over any details from the image. Also, you are free to lay out and style your project as you see fit.
+## Relaxing complains from ESLint
 
-![example screenshot of simple implementation of the 'baby names' project](./example-screenshots/finished.png)
+If you find lint is too strict, you can edit the rules section of [.eslintrc.cjs](.eslintrc.cjs).
 
-## Setup
+## Building and previewing a static version of your app:
 
-- Create a new React app on your machine called `baby-names-react`. Make sure you set up with TypeScript not the JavaScript default. 
-[Guide to React project creation setup (with TypeScript)](https://www.notion.so/weareacademy/How-to-create-a-React-app-with-TypeScript-76643f84db564a69a04db9a0b6a2f2e7)
+This process is normally performed automatically by a build&host service such as Netlify or Vercel.
 
-- Publish the project repo to github. Call it `baby-names-react`.
+However, you can [run it yourself](https://vitejs.dev/guide/static-deploy.html#building-the-app) to observe the outputs.
 
-- Set up continuous deployment of your app to [Netlify](https://netlify.app/) as `academy-yourgithubusername-baby-names`.netlify.app where `yourgithubusername` is your github username. See [Netlify deployment guide for React apps](https://www.notion.so/weareacademy/How-to-deploy-a-React-app-to-free-Netlify-hosting-9e6ebd4dcb814cb483c34eb0f05ea96e)
+```
+yarn build
+```
 
+This will bundle your many source files into very few in `dist/`, ready for deployment on a web server. As part of the process, it will convert your TypeScript files into JavaScript, using the TypeScript compiler, `tsc`.
 
+If you've run a local build, you can start a local server to host those files, using:
 
-### Setup - the data:
+```
+yarn preview
+```
 
-The data is available in the file [./data/babyNamesData.json](./data/babyNamesData.json).
+## Automatic Deployment with Netlify
 
-Copy across this JSON file to your app's `src/` directory, and then import it.
+See [Netlify with Git](https://vitejs.dev/guide/static-deploy.html#building-the-app)
+or more generally, ["Deploying a Static Site" in the Vite Guide](https://vitejs.dev/guide/static-deploy.html).
 
-## Exercise 1
+## Other scripts
 
-- Write a React app which lists baby names from the given file.
+See [package.json](package.json) for other scripts.
 
-- It should display boys' and girls' names differently - it's your choice as to how\*
+## Feature summary
 
-- The names should be displayed in ascending alphabetical order.
+-   React app (hot-reloaded when you make changes)
+-   TypeScript
+-   ESLint and custom config
+-   Formatting with prettier
+-   Testing with
+    -   vitest (jest-equivalent) and
+    -   react-testing-library
+-   CI with GitHub Actions
+-   vscode debugger launch config
+-   Vite
+    -   Type-checking and linting errors presented into the browser (vite-plugin-checker)
+-   As little other junk as possible
 
-- Your project should be on GitHub and Netlify with correct names.
+## Attaching the vscode javascript debugger to your react app (in dev)
 
-(\*) Feel very free to break from the the "blue-for-boys/pink-for-girls" stereotyping and style it differently.
+(This is meant as an optional alternative to the excellent chrome devtools.)
 
-### Example Screenshot
+-   Start the dev server (e.g. yarn start)
+-   In vscode, switch to the "Run and debug" tab from the side menu
+-   At the top, click the green play button entitled "Launch Chrome against localhost"
+    -   Browser should also launch, eventually
+-   Add breakpoint(s) to your react code in vscode, or add the `debugger` keyword
+-   Interact with the React app so that your breakpoints / `debugger` keyword are encountered.
+-   vscode's debugger should now present you with the local variables, the call stack, etc.
+-   Use the transport controls at the top to step through your code or continue execution
 
-![Level 1 Example Screenshot](./example-screenshots/level-1.png)
+## Alternative to vite-plugin-checker
 
-## Exercise 2
+If you don't want to use vite-plugin-checker but you do want to get type-checking errors in the terminal, you can run dev and type-check at the same time by adding this script to package.json:
 
-(Make sure your previous work is all committed to git before commencing this exercise!)
+```
+"dev-and-type-check": "npx concurrently 'vite --port 3000' 'tsc --noEmit --watch'"
+```
 
-- Add a search bar.
+## Misc notes on Vite
 
-- When the user types into it, your app should update the displayed list of baby names to only show matches.
-
-- Matches should be case-insensitive.
-
-- When the search bar is clear, all names should be shown.
-
-### Example Screenshot
-
-![Level 2 Example Screenshot](./example-screenshots/level-2.png)
-
-### Note
-Don't worry initially about breaking down your solution into multiple cooperating components.  That will add extra complexity.  First, feel free to get the application working with all the logic and state stored in a single component.
-
-
-## Exercise 3
-
-(Make sure your previous work is all committed to git before commencing this exercise!)
-
-- Check in with faculty before continuing to this level.
-
-- Add a "favourites" list, displayed separately.
-
-- When the user clicks a name from the main list, it should be moved to a "favourites" list. It should disappear from the main list!
-
-- When the user clicks a name from the _favourites_ list, it should be moved back to the main list. It should disappear from the favourites list!
-
-### Example Screenshot
-
-![Level 3 Example Screenshot](./example-screenshots/level-3.png)
-
-## Exercise 4
-
-(Make sure your previous work is all committed to git before commencing this exercise!)
-
-Add "name gender" filter buttons.
-
-These buttons should allow the user to see only boy names, girl names, or all names.
-
-The buttons should operate as "radio" buttons - exactly one should be active at any time.
-
-The app should start by showing all names.
-
-It should be clear which filter (if any) is in effect at any time.
-
-_How it works with search:_
-
-If there is also a search term in effect, your app should apply the gender filter to those search results.
-
-### Example Screenshot
-
-![Level 4 Example Screenshot](./example-screenshots/level-4.png)
-
-# Organise into components
-
-If you haven't yet organised the application into components, try to do so now.  This isn't easy, so make sure you've committed your work before you start.
-
-
-# Ideas for more work
-
-- Find a way to persist the user's favourites even after the browser tab is closed
-- Add the ability for the user to shuffle the list of names
-- Find an attractive way to differentiate names by gender that doesn't use blue/pink stereotypes.
-- Add some suitably-themed sound effects for the UI.
-  - Josh W Comeau's [useSound hook](https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/) can help here,
-  - as can [freesound.org](https://freesound.org/)
-
-## Credits
-
-The core app idea for this challenge, and its default look, were taken from [Simon Vrachliotis'](https://simonswiss.com/) app, found via [react.rocks](https://react.rocks/example/Baby_name_inspiration).
+-   [Vite guide](https://vitejs.dev/guide/)
+-   [About the `public` directory](https://vitejs.dev/guide/assets.html#the-public-directory)
+-   [Vite powerful React project setup](https://dev.to/equiman/vite-powerful-react-project-g4m) (Camilo Martinez)

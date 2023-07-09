@@ -1,0 +1,44 @@
+.procedure-card {
+    background-color: #171738;
+    width: 320px;
+    color: #DFF3E4;
+    padding: 16px;
+}
+
+
+
+.procedure-heading-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.new-procedure-heading-input {
+    height: 100%;
+    font-size: 1rem;
+    flex-grow: 1;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.new-procedure-heading{
+    height: 100%;
+    font-size: 1rem;
+    flex-grow: 1;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.card-heading-toggle-button {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+}
