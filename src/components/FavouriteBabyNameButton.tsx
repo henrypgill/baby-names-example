@@ -4,25 +4,25 @@ interface BabyName {
     sex: string;
 }
 
-interface BabyNameProps {
+interface BabyNameButtonProps {
     id: number;
     name: string;
     sex: string;
-    addToFavourites(babyName: BabyName): void;
+    removeFromFavourites(babyName: BabyName): void;
 }
 
-export function BabyNameButton({
+export function FavouriteBabyNameButton({
     id,
     name,
     sex,
-    addToFavourites,
-}: BabyNameProps): JSX.Element {
+    removeFromFavourites,
+}: BabyNameButtonProps): JSX.Element {
     const babyName: BabyName = { id: id, name: name, sex: sex };
     return (
         <button
             key={id}
-            className={`gender-${sex}-button`}
-            onClick={() => addToFavourites(babyName)}
+            className={`gender-${sex}-button favourites-button`}
+            onClick={() => removeFromFavourites(babyName)}
         >
             {name}
         </button>

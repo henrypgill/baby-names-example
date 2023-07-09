@@ -1,9 +1,128 @@
 html {
-    background: #f8f8f8;
+    background: #6c6ea0;
     font-size: 16px;
+    color: #fefefe;
 }
-
 
 body {
     margin: 0px;
+}
+
+.App {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    row-gap: 64px;
+    padding-top: 64px;
+}
+
+.top-section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.filter-buttons-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 16px;
+}
+
+.favourites-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    justify-items: center;
+}
+
+.reset-button {
+    grid-column: span 2;
+    width: 240px;
+    padding: 16px;
+    height: 64px;
+    font-size: 24px;
+}
+
+.button-container-favourites {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 16px;
+    padding: 8px;
+}
+.male-favourites {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    min-width: 400px;
+    min-height: 180px;
+}
+.female-favourites {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    min-width: 400px;
+    min-height: 180px;
+}
+
+button {
+    border: 0px;
+    margin: 4px;
+    padding: 8px;
+    border-radius: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 40px;
+    background: #6c6ea0;
+    box-shadow: 8px 8px 8px #5c5e88, -8px -8px 32px #7c7fb8;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fefefe;
+    min-width: 64px;
+}
+
+button:active {
+    color: #fefefe;
+    background: #6c6ea0;
+    box-shadow: inset 12px 12px 25px #5c5e88, inset -12px -12px 25px #7c7fb8;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1440px;
+    row-gap: 16px;
+    column-gap: 16px;
+}
+
+.gender-m-button {
+}
+
+.gender-f-button {
+}
+
+.all-filter-button {
+    color: #7fb685;
+}
+.male-filter-button {
+    color: #66c7f4;
+}
+.female-filter-button {
+    color: #ef6f6c;
+}
+
+.active-filter-button {
+    color: #fefefe;
 }
