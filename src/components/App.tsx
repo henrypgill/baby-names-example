@@ -48,6 +48,7 @@ function App() {
     function removeNameFromFavourites(babyName: BabyName) {
         if (babyName.id === -1) {
             setFavourites([]);
+            setBabyNames(babyData);
         } else {
             setBabyNames((prev) =>
                 [...prev, babyName].sort((a, b) =>
